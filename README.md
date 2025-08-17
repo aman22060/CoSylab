@@ -18,8 +18,9 @@ This repository contains the **CoSyLab Website**, including:
 
 ## Project Structure
 
-CoSyLab/
-├── CoSyLab\_Final/          # Main frontend
+CoSylab/
+├── Cosylab/         
+   ├── Cosylab\_Final/      # Main frontend
 ├── adminportal/
 │   ├── frontend/           # Admin portal frontend
 │   └── Backend/            # Backend API
