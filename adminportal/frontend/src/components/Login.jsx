@@ -22,7 +22,7 @@ export default function Login({ setIsAuthenticated }) {
     setError("");
     setLoading(true);
 
-    console.log("🔑 [Login] Sending POST /login with:", password);
+    console.log("[Login] Sending POST /login with:", password);
     try {
       const res = await fetch("/login", {
         method: "POST",
@@ -31,18 +31,18 @@ export default function Login({ setIsAuthenticated }) {
         body: JSON.stringify({ password }),
       });
 
-      console.log("🔑 [Login] Response status:", res.status);
+      console.log("[Login] Response status:", res.status);
       const headers = Array.from(res.headers.entries());
-      console.log("🔑 [Login] Response headers:", headers);
+      console.log("[Login] Response headers:", headers);
 
       let data;
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
         data = await res.json();
-        console.log("🔑 [Login] JSON:", data);
+        console.log("[Login] JSON:", data);
       } else {
         data = await res.text();
-        console.log("🔑 [Login] Text:", data);
+        console.log("[Login] Text:", data);
       }
 
       if (!res.ok) {
@@ -50,13 +50,13 @@ export default function Login({ setIsAuthenticated }) {
         setPassword("");
         inputRef.current?.focus();
       } else {
-        console.log("🔑 [Login] Success! Redirecting…");
+        console.log("[Login] Success! Redirecting…");
         setIsAuthenticated(true);
         setPassword("");
         navigate("/");
       }
     } catch (err) {
-      console.error("🔑 [Login] Network or unexpected error:", err);
+      console.error("[Login] Network or unexpected error:", err);
       setError("Network error, please try again.");
     } finally {
       setLoading(false);
