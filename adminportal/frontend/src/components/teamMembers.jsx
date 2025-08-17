@@ -1,4 +1,3 @@
-// src/components/TeamMembers.jsx
 import React, { useState, useEffect, useRef } from "react";
 import bgImage from "../components/Bgimg.jpeg";
 import {
