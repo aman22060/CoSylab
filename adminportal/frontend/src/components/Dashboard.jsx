@@ -1,4 +1,3 @@
-// src/components/Dashboard.jsx
 import React, { useEffect, useState } from "react";
 import bgImage from "../components/Bgimg.jpeg";
 import { Box, Typography } from "@mui/material";
