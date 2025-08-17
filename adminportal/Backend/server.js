@@ -7,9 +7,11 @@ const session       = require('express-session');
 const bcrypt        = require('bcrypt');
 const helmet        = require('helmet');
 const rateLimit     = require('express-rate-limit');
+const morgan = require('morgan');
 require('dotenv').config({ path: './assets/imp.env' });
 
 const app = express();
+app.use(morgan('combined'));
 
 // ─── Trust proxy for secure cookies behind proxies ───────────────
 app.set('trust proxy', 1);
@@ -41,8 +43,12 @@ app.use(rateLimit({
 }));
 
 // Allow cross‑origin with credentials for your front‑end
+// app.use(cors({
+//   origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000'],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000'],
+  origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000', 'http://cosylab.iiitd.ac.in'],
   credentials: true
 }));
 
@@ -333,4 +339,5 @@ app.delete('/social-media/:id', ensureAdmin, (req, res) => {
 
 // ─── Start server ────────────────────────────────────────────────
 const PORT = process.env.PORT || 3005;
-app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST, () => console.log(`Server listening on ${PORT}`));

@@ -119,7 +119,7 @@ export default function NewsSection() {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    fetch("/news-section", { credentials: "include" })
+    fetch("http://192.168.19.2:3005/news-section", { credentials: "include" })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .then((data) => setNewsItems(data))
       .catch((e) => setError("Could not load news."))
@@ -231,7 +231,7 @@ export default function NewsSection() {
           <Table>
             <TableHead sx={styles.tableHead}>
               <TableRow>
-                {["ID","Title","Link","Description","Image","Action"].map(col => (
+                {["ID", "Title", "Link", "Description", "Image", "Action"].map(col => (
                   <TableCell key={col} sx={styles.headCell}>{col}</TableCell>
                 ))}
               </TableRow>
@@ -246,12 +246,12 @@ export default function NewsSection() {
                   <TableRow hover key={item.id}>
                     <TableCell sx={styles.rowCell}>{item.id}</TableCell>
                     <TableCell sx={styles.rowCell}>{item.Title}</TableCell>
-                    <TableCell><a href={item.Tile_Link} target="_blank" rel="noopener noreferrer" style={{color: '#4dabf5'}}>Visit</a></TableCell>
+                    <TableCell><a href={item.Tile_Link} target="_blank" rel="noopener noreferrer" style={{ color: '#4dabf5' }}>Visit</a></TableCell>
                     <TableCell sx={styles.descCell}>{item.Description}</TableCell>
                     <TableCell>
-                      {item.newsImg ? <Avatar src={`data:image/jpeg;base64,${item.newsImg}`} variant="rounded"/> : <Typography sx={{color: '#ccc', fontStyle: 'italic'}}>No Image</Typography>}
+                      {item.newsImg ? <Avatar src={`data:image/jpeg;base64,${item.newsImg}`} variant="rounded" /> : <Typography sx={{ color: '#ccc', fontStyle: 'italic' }}>No Image</Typography>}
                     </TableCell>
-                    <TableCell><IconButton color="error" onClick={() => handleDelete(item.id)}><DeleteIcon/></IconButton></TableCell>
+                    <TableCell><IconButton color="error" onClick={() => handleDelete(item.id)}><DeleteIcon /></IconButton></TableCell>
                   </TableRow>
                 ))
               )}

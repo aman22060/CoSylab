@@ -7,14 +7,14 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Dashboard      from "./components/Dashboard";
-import TeamMembers    from "./components/teamMembers";
-import Talks           from "./components/talks";
-import NewsSection     from "./components/newSection";
-import Publication     from "./components/Publication";
-import SocialMedia     from "./components/socialMedia";
-import Navbar          from "./components/Navbar";
-import Login           from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import TeamMembers from "./components/teamMembers";
+import Talks from "./components/talks";
+import NewsSection from "./components/newSection";
+import Publication from "./components/Publication";
+import SocialMedia from "./components/socialMedia";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
