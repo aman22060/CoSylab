@@ -1,4 +1,3 @@
-// src/components/SocialMedia.jsx
 import React, { useState, useEffect } from 'react';
 import bgImage from '../components/Bgimg.jpeg';
 import {
